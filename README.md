@@ -16,12 +16,7 @@ For other information see comments in code.
 # Czech information
 # Simulátor systémů zdviží ve výškových budovách
 
-## Diplomová práce - Michal Semelka 2016/2017
-
-## Univerzita Pardubice, Fakulta elektrotechniky a informatiky, Katedra Řízení procesů
 
 ### Zádání
-Postup: Cílem práce je vytvoření softwarového simulátoru systému zdviží v budovách o mnoha patrech. Cílem simulátoru je predikovat míru zatížení systému výtahů v závislosti na denní době. Simulátor bude umožňovat nastavení obecného systému výtahů (množství výtahových šachet, vertikální poloha výtahových šachet v rámci budovy, kapacita kabiny, rychlost obsluhy, řídicí systém kabiny a systému kabin) a také statistických veličin popisujících chování návštěvníku v budově. Výsledný software bude umožňovat také jednoduchou vizualizaci výsledné simulace.
+Cílem simulátoru je predikovat míru zatížení systému výtahů v závislosti na denní době. Simulátor bude umožňovat nastavení obecného systému výtahů (množství výtahových šachet, vertikální poloha výtahových šachet v rámci budovy, kapacita kabiny, rychlost obsluhy, řídicí systém kabiny a systému kabin) a také statistických veličin popisujících chování návštěvníku v budově. Výsledný software bude umožňovat také jednoduchou vizualizaci výsledné simulace.
 Teoretická část: Stručná rešerše problematiky spojité a diskrétní simulace, rešerše podobných řešení, rešerše řídicích systémů výtahů.
-
-### Vedoucí práce: Ing. Petr Doležel, Ph.D.
