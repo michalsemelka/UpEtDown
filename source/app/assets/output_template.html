@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Michal Semelka">
+	<title>Up&amp;Down – Simulation results</title>
+	<script>
+    function toggledisplay(elementID)
+    {
+        (function(style) {
+            style.display = style.display === 'none' ? '' : 'none';
+            text = style.display === 'none' ? 'Show configuration of lifts' : 'Hide configuration of lifts'
+            document.getElementById("showLifts").innerHTML = text;
+        })(document.getElementById(elementID).style);
+    }
+    </script>
+
+	<style>
+	* {box-sizing: border-box;}
+
+	body {font-family:Georgia, Serif; font-size: 1em; line-height: 1.5; color:black; counter-reset: h2; background: #f5f5f5;}
+	a {color:red;}
+	a:hover {text-decoration: underline;}
+	.page {max-width: 770px; padding:1em; border:1px solid #d2d2d2; margin-left: auto;margin-right: auto; background: #fff;}
+	header {text-align: center;}
+	header .h1-main {background: red; color: white; text-transform: uppercase;}
+	.element {padding:25px 0; border-top:1px dotted #666;}
+	.element--conf {border-bottom:1px dotted #666;}
+	table {border-collapse: collapse; border:1px solid #666; width: 100%;}
+	table td {border:1px solid #666; padding: 10px;}
+	nav {border-bottom:1px solid #666;}
+	pre {font-family:monospace; background: whitespace; border: 1px dashed #606; padding:0.5em 1em; word-wrap: break-word;}
+	footer {background: ; border-top:1px solid #666;}
+	img {border:5px solid #666;}
+
+	.lifts td:first-of-type {font-weight: bold; text-align: center;}
+ 	
+ 	/*cislovani*/
+ 	nav ol {counter-reset:nadpisy;list-style-type:none;}
+	nav ol li {counter-increment:nadpisy;}
+	nav ol li:before {content:counters(nadpisy, '.') ' ';}
+	h2 a, h3 a {color:#000;}
+	h2 {counter-reset: h3}
+	h3 {counter-reset: h4}
+	h2:before {counter-increment: h2; content: counter(h2) " "; padding-right:10px;}
+	h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) " ";}
+	
+	abbr {border-bottom: 1px dotted red;}
+	.cntr {text-align: center; width: 100%; display: block;}
+
+	#showLifts {cursor:pointer;}
+	#showLifts::after {display: inline-block; padding-left: 5px; content:"\00BB";}
+	</style>
+</head>
+<body>
+	<div class="page">
+	<header>
+	<h1 class="h1-main">Simulation of Elevator Group in Buildings</h1>
+	<h1>Up&amp;Down – Simulation result</h1>
+	</header>
+
+	<article>
+	<div class="element">
+		Simulation date: %%DATE%%; System behavior: <strong>%%BEHAVIOR%%</strong>
+	</div>
+	<div class="element">
+		Result: <strong>Simulation was successful!</strong>
+	</div>
+	
+	<div class="element">
+		<h2>Visitors' data</h2>
+		<p>
+			Total number of visitors: %%NUM_VISITORS%%.
+			Number of visitors, that must wait for lift: %%AWT_COUNT%%.
+		</p>
+			<p>
+				<strong>Average waiting time was %%AWT%% iteration.</strong>
+			</p>
+			<table cellspacing="0">
+				<tr>
+					<td>Maximum</td>
+					<td>Minimum</td>
+					<td>STDEV</td>
+				</tr>
+				<tr>
+					<td>%%AWT_MAX%%</td>
+					<td>%%AWT_MIN%%</td>
+					<td>%%AWT_STDEV%%</td>
+				</tr>
+			</table>
+			<p>
+				<strong>Average time spent in lift was %%ALT%% iteration.</strong>
+			</p>
+			<table cellspacing="0">
+				<tr>
+					<td>Maximum</td>
+					<td>Minimum</td>
+					<td>STDEV</td>
+				</tr>
+				<tr>
+					<td>%%ALT_MAX%%</td>
+					<td>%%ALT_MIN%%</td>
+					<td>%%ALT_STDEV%%</td>
+				</tr>
+			</table>
+			<p>
+				<strong>Average travel time was %%ATT%% iteration.</strong>
+			</p>
+			<table cellspacing="0">
+				<tr>
+					<td>Maximum</td>
+					<td>Minimum</td>
+					<td>STDEV</td>
+				</tr>
+				<tr>
+					<td>%%ATT_MAX%%</td>
+					<td>%%ATT_MIN%%</td>
+					<td>%%ATT_STDEV%%</td>
+				</tr>
+			</table>
+		</p>
+	</div>
+
+	<div class="element">
+		<h2>Data of lifts</h2>
+		<p>
+			Total number of lifts: %%LIFT_TOTAL%%.
+		</p>
+		<p>
+		<a id="showLifts" onClick="toggledisplay('lifts-settings');">Show configuration of lifts</a>
+		</p>
+		<div id="lifts-settings" style="display:none;">
+			<div class="element element--conf">
+				<table cellspacing="0" class="lifts">
+					<tr>
+						<td><strong>Lift ID</strong></td>
+						<td>Base Floor</td>
+						<td>Final FLoor</td>
+						<td>Forbidden Floors</td>
+						<td>Capacity</td>
+						<td>Speed</td>
+					</tr>
+					%%LIFT_CONF%%
+				</table>
+			</div>
+		</div>
+			<p>
+				<strong>Total number of floors covered: %%LIFT_FLOORS%%.</strong>
+			</p>
+			<table cellspacing="0">
+				<tr>
+					<td>Maximum floors</td>
+					<td>Minimum floors</td>
+					<td>Average of floors each</td>
+				</tr>
+				<tr>
+					<td>Lift no.%%LIFT_MAX_ID%% (%%LIFT_MAX_COUNT%%)</td>
+					<td>Lift no.%%LIFT_MIN_ID%% (%%LIFT_MIN_COUNT%%)</td>
+					<td>%%LIFT_MEAN%%</td>
+				</tr>
+			</table>
+		</p>
+	</div>
+	
+	<div class="element">
+		<h2>Figures</h2>
+		<p>
+			<img src="%%HIST_URL%%" style="max-width:100%;height:auto;" alt="Histogram of arrivals"><span class="cntr"><em>Figure 1: Histogram of arrivals</em></span>
+		</p>
+		<p>
+			<img src="%%WAIT_URL%%" style="max-width:100%;height:auto;" alt="Visitors' waiting times"><span class="cntr"><em>Figure 2: Average waiting time during simulation and visitors' waiting times</em></span>
+		</p>
+		
+	</div>
+		
+	</article>
+
+	<footer>
+		<p class="cntr">
+			This report is automatically generated. Author: Michal Semelka.
+		</p>
+	</footer>
+	</div>
+</body>
+</html>
+
